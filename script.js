@@ -236,6 +236,22 @@
     });
   });
 
+  // --- Language card tap on mobile ---
+  var activeLangCard = null;
+
+  document.querySelectorAll('.lang-card').forEach(function (card) {
+    card.addEventListener('click', function () {
+      if (activeLangCard === card) {
+        card.classList.remove('tapped');
+        activeLangCard = null;
+      } else {
+        if (activeLangCard) activeLangCard.classList.remove('tapped');
+        card.classList.add('tapped');
+        activeLangCard = card;
+      }
+    });
+  });
+
   // --- Auto year in footer ---
   const yearEl = document.getElementById('year');
   if (yearEl) {

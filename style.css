@@ -775,19 +775,100 @@ a:hover {
 }
 
 /* Languages */
-.cv__lang-list {
+.cv__lang-cards {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.75rem;
+  margin-top: 0.5rem;
+}
+
+.lang-card {
+  position: relative;
   display: flex;
-  flex-wrap: wrap;
-  gap: 1.25rem 2rem;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.9rem 1.2rem;
+  border: 1px solid var(--color-border);
+  background-color: var(--color-surface);
+  overflow: hidden;
+  transition: border-color 0.4s ease, transform 0.4s ease, box-shadow 0.4s ease;
 }
 
-.cv__lang {
-  font-size: 0.95rem;
+/* Flag stripe — always visible on left edge */
+.lang-card::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 4px;
+  background: var(--flag-stripe);
+  z-index: 1;
+  transition: opacity 0.4s ease;
 }
 
-.cv__lang em {
-  color: var(--color-text-muted);
-  font-size: 0.85rem;
+/* Flag wash — full width, fades in on hover */
+.lang-card::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: var(--flag-bg);
+  opacity: 0;
+  z-index: 0;
+  transition: opacity 0.4s ease;
+}
+
+.lang-card:hover,
+.lang-card.tapped {
+  border-color: var(--color-text-muted);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+}
+
+/* On hover: hide stripe, show full flag wash */
+.lang-card:hover::before,
+.lang-card.tapped::before {
+  opacity: 0;
+}
+
+.lang-card:hover::after,
+.lang-card.tapped::after {
+  opacity: 1;
+}
+
+.lang-card__name {
+  position: relative;
+  z-index: 1;
+  font-family: var(--font-mono);
+  font-size: 0.9rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  color: var(--color-text);
+}
+
+.lang-card__level {
+  position: relative;
+  z-index: 1;
+  font-family: var(--font-mono);
+  font-size: 1.1rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  color: var(--color-accent);
+  text-transform: uppercase;
+}
+
+/* Staggered fade-in for language cards */
+.cv__lang-cards .fade-in:nth-child(1) { transition-delay: 0s; }
+.cv__lang-cards .fade-in:nth-child(2) { transition-delay: 0.07s; }
+.cv__lang-cards .fade-in:nth-child(3) { transition-delay: 0.14s; }
+.cv__lang-cards .fade-in:nth-child(4) { transition-delay: 0.21s; }
+.cv__lang-cards .fade-in:nth-child(5) { transition-delay: 0.28s; }
+.cv__lang-cards .fade-in:nth-child(6) { transition-delay: 0.35s; }
+
+@media (max-width: 768px) {
+  .cv__lang-cards {
+    grid-template-columns: 1fr;
+  }
 }
 
 @media (max-width: 768px) {
