@@ -110,7 +110,7 @@
 
         <div class="projects__grid">
 
-          <article class="project-card fade-in">
+          <article class="project-card fade-in" data-project="choice-predictor">
             <h3 class="project-card__title">Choice Predictor</h3>
             <p class="project-card__desc">Interactive web application where a user makes binary choices and an ML algorithm learns from these decisions to predict the user's next selection.</p>
             <div class="project-card__tags">
@@ -120,15 +120,16 @@
             </div>
           </article>
 
-          <article class="project-card fade-in">
+          <article class="project-card fade-in" data-project="value-vision">
             <h3 class="project-card__title">Value Vision Training Game</h3>
             <p class="project-card__desc">Game in Python where artists can train their tonal values to improve their realistic drawing and painting skills.</p>
             <div class="project-card__tags">
               <span class="tag">Python</span>
+              <span class="tag">Streamlit</span>
             </div>
           </article>
 
-          <article class="project-card fade-in">
+          <article class="project-card fade-in" data-project="beat81">
             <h3 class="project-card__title">Beat81 Workout Dashboard</h3>
             <p class="project-card__desc">Using Python's Streamlit library to visualize workout results in an interactive dashboard.</p>
             <div class="project-card__tags">
@@ -137,7 +138,7 @@
             </div>
           </article>
 
-          <article class="project-card fade-in">
+          <article class="project-card fade-in" data-project="finance">
             <h3 class="project-card__title">Personal Finance Management</h3>
             <p class="project-card__desc">Track personal finances using Python's Pandas library and Excel. Script cleans and categorizes bank statement CSVs to create an overview of average expenses per category.</p>
             <div class="project-card__tags">
@@ -146,7 +147,7 @@
             </div>
           </article>
 
-          <article class="project-card fade-in">
+          <article class="project-card fade-in" data-project="group-allocation">
             <h3 class="project-card__title">Group Allocation Algorithm</h3>
             <p class="project-card__desc">Algorithm for allocating people to experimental groups when balanced attributes between groups are required.</p>
             <div class="project-card__tags">
@@ -154,7 +155,7 @@
             </div>
           </article>
 
-          <article class="project-card fade-in">
+          <article class="project-card fade-in" data-project="disinformation">
             <h3 class="project-card__title">Russian Disinformation Analysis</h3>
             <p class="project-card__desc">Analyzed a network of Telegram messages to uncover the propagation of Russian disinformation narratives through German-speaking channels.</p>
             <div class="project-card__tags">
@@ -163,7 +164,7 @@
             </div>
           </article>
 
-          <article class="project-card fade-in">
+          <article class="project-card fade-in" data-project="image-homogeneity">
             <h3 class="project-card__title">Image Homogeneity Algorithm</h3>
             <p class="project-card__desc">Algorithm that finds areas in an image that are similar in tonal value — a tool for artists and image analysts.</p>
             <div class="project-card__tags">
@@ -171,7 +172,7 @@
             </div>
           </article>
 
-          <article class="project-card fade-in">
+          <article class="project-card fade-in" data-project="fmri">
             <h3 class="project-card__title">fMRI Data Preprocessing</h3>
             <p class="project-card__desc">Using MATLAB's SPM toolbox to preprocess neuroimaging data for analysis in cognitive neuroscience research.</p>
             <div class="project-card__tags">
@@ -375,6 +376,18 @@
     <a href="#hero" class="footer__top">BACK TO TOP &uarr;</a>
     <p>&copy; <span id="year"></span> Maja Guseva. Built with curiosity and coffee.</p>
   </footer>
+
+  <!-- ===================== PROJECT MODAL ===================== -->
+  <div class="modal-overlay" id="modal-overlay">
+    <div class="modal" id="modal">
+      <button class="modal__close" id="modal-close" aria-label="Close">&times;</button>
+      <h3 class="modal__title" id="modal-title"></h3>
+      <div class="modal__tags" id="modal-tags"></div>
+      <img class="modal__image" id="modal-image" src="" alt="" loading="lazy">
+      <div class="modal__desc" id="modal-desc"></div>
+      <div class="modal__links" id="modal-links"></div>
+    </div>
+  </div>
 
   <script src="script.js"></script>
 </body>
