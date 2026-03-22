@@ -398,7 +398,7 @@ a:hover {
 .marquee__track {
   display: flex;
   width: max-content;
-  animation: marquee 30s linear infinite;
+  animation: marquee 60s linear infinite;
 }
 
 .marquee__content {
