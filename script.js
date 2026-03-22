@@ -220,6 +220,22 @@
     if (e.key === 'Escape') closeModal();
   });
 
+  // --- Skill tile tap-to-fill on mobile ---
+  var activeSkillTile = null;
+
+  document.querySelectorAll('.skill-tile').forEach(function (tile) {
+    tile.addEventListener('click', function () {
+      if (activeSkillTile === tile) {
+        tile.classList.remove('tapped');
+        activeSkillTile = null;
+      } else {
+        if (activeSkillTile) activeSkillTile.classList.remove('tapped');
+        tile.classList.add('tapped');
+        activeSkillTile = tile;
+      }
+    });
+  });
+
   // --- Auto year in footer ---
   const yearEl = document.getElementById('year');
   if (yearEl) {
