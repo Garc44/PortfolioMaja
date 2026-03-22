@@ -216,6 +216,7 @@ a:hover {
 @media (max-width: 768px) {
   .nav__hamburger {
     display: flex;
+    z-index: 110;
   }
 
   .nav__links {
@@ -231,6 +232,7 @@ a:hover {
     gap: 1.5rem;
     transition: right var(--transition);
     box-shadow: -4px 0 20px rgba(0, 0, 0, 0.08);
+    z-index: 105;
   }
 
   .nav__links.open {
