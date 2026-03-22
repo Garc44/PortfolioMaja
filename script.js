@@ -172,8 +172,8 @@
   const modalLinks = document.getElementById('modal-links');
   const modalClose = document.getElementById('modal-close');
 
-  function openModal(projectId) {
-    const data = projectData[projectId];
+  function openModal(id) {
+    const data = projectData[id] || publicationData[id];
     if (!data) return;
 
     modalTitle.textContent = data.title;
@@ -218,6 +218,57 @@
 
   document.addEventListener('keydown', function (e) {
     if (e.key === 'Escape') closeModal();
+  });
+
+  // --- Publication modal ---
+  const publicationData = {
+    'neural-randomization': {
+      title: 'Neural correlates of behavioral randomization',
+      tags: ['fMRI', 'Neuroscience', 'Randomization'],
+      image: null,
+      desc: `<p>This study examined brain activity during three task variations requiring random sequence generation under different instructions. Using fMRI with 90 participants, the research identified a consistent frontoparietal activation pattern across all randomization tasks, while also revealing unique neural mechanisms depending on how the task was framed.</p>
+<p>The findings contribute to understanding how the brain produces random behavior — a seemingly simple ability that engages complex cognitive control networks.</p>`,
+      links: [
+        { label: 'Preprint', url: 'https://www.biorxiv.org/content/10.1101/2024.03.27.586961v1.full' }
+      ]
+    },
+    'instruction-effects': {
+      title: 'Instruction effects on randomness in sequence generation',
+      tags: ['Psychology', 'Randomization', 'Online Study'],
+      image: null,
+      desc: `<p>An online study with 388 participants examining how task instructions affect randomization performance. Participants generated random sequences under varying instructions — from being asked to be "irregular" to simulating coin tosses.</p>
+<p>Results showed that randomization scores were highest when participants were asked to be irregular or simulate coin tosses, revealing that the framing of randomization instructions significantly shapes the statistical properties of the sequences people produce.</p>`,
+      links: [
+        { label: 'Full Article', url: 'https://www.frontiersin.org/articles/10.3389/fpsyg.2023.1113654/full' }
+      ]
+    },
+    'face-masks': {
+      title: 'Surgical face masks do not impair the decoding of facial expressions of negative affect more severely in older than in younger adults',
+      tags: ['Emotion Recognition', 'Aging', 'Face Perception'],
+      image: null,
+      desc: `<p>This study compared facial emotion recognition in younger and older adults when faces were partially occluded by digitally added surgical masks. The research addressed concerns that mask-wearing during the COVID-19 pandemic might disproportionately affect older adults' ability to read emotions.</p>
+<p>The findings showed that while masks reduced recognition accuracy overall, there was no differential age effect — older adults were not more severely impaired than younger adults, challenging assumptions about age-related vulnerability in masked face processing.</p>`,
+      links: [
+        { label: 'Full Article', url: 'https://cognitiveresearchjournal.springeropen.com/articles/10.1186/s41235-022-00403-8' }
+      ]
+    },
+    'green-electricity': {
+      title: 'Willingness-to-pay for Green Electricity: The Increasing Gap Between Fiction and Reality',
+      tags: ['Energy Economics', 'Survey Analysis'],
+      image: null,
+      desc: `<p>An analysis of household preferences for green electricity based on representative surveys from 2013 and 2015 covering 6,000 German households. The study examined the divergence between stated acceptance of renewable energy and actual willingness-to-pay for it.</p>
+<p>The findings revealed an increasing gap between the broad public support for renewable energy and the much lower willingness to bear its costs — highlighting the challenge of translating environmental attitudes into economic behavior.</p>`,
+      links: [
+        { label: 'Full Article', url: 'https://link.springer.com/article/10.1007/s12398-016-0185-4' }
+      ]
+    }
+  };
+
+  document.querySelectorAll('.pub[data-publication]').forEach(function (pub) {
+    pub.style.cursor = 'pointer';
+    pub.addEventListener('click', function () {
+      openModal(pub.getAttribute('data-publication'));
+    });
   });
 
   // --- Skill tile tap-to-fill on mobile ---
